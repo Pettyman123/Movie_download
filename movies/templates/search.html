@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Downloader</title>
+</head>
+<body>
+    <h1>Search for a Movie</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    {% if movie_data %}
+        <h2>Movie Details</h2>
+        <p>Title: {{ movie_data.Title }}</p>
+        <p>Year: {{ movie_data.Year }}</p>
+        <p>Genre: {{ movie_data.Genre }}</p>
+        <p>Director: {{ movie_data.Director }}</p>
+    {% endif %}
+    {% if download_link %}
+        <h2>Download Link</h2>
+        <p><a href="{{ download_link }}" target="_blank">Download Movie</a></p>
+    {% endif %}
+</body>
+</html>
